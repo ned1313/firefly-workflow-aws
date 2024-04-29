@@ -1,5 +1,13 @@
 provider "aws" {
   region = "us-east-1"
+
+  default_tags {
+    tags = {
+      "Environment" = var.environment
+      "createdby"   = "firefly"
+    }
+  
+  }
 }
 
 data "aws_ami" "ubuntu" {
@@ -80,7 +88,7 @@ resource "aws_instance" "web" {
 
   tags = {
     "Environment" = var.environment
-    "createdby"   = "terraform"
+    "createdby"   = "firefly"
   }
 }
 
